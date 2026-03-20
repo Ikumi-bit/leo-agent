@@ -1,5 +1,8 @@
 [build]
 builder = "nixpacks"
 
-[environments.production.deploy]
+[services.web.deploy]
 startCommand = "gunicorn server:app --bind 0.0.0.0:$PORT --workers 1"
+
+[services.worker.deploy]
+startCommand = "python scheduler.py"
