@@ -96,6 +96,18 @@ KNOWLEDGE_BASE = [
         ),
         "scene": "何をしたいか分からないとき、完全に力を抜きたいとき",
     },
+    {
+        "category": "手動トリガー・休日",
+        "keywords": ["休日", "今日は休み", "お休み", "休みです"],
+        "content": "__HOLIDAY_TRIGGER__",
+        "scene": "手動で休日モードを起動するとき",
+    },
+    {
+        "category": "手動トリガー・平日",
+        "keywords": ["平日", "仕事", "今日の予定", "予定確認"],
+        "content": "__WEEKDAY_TRIGGER__",
+        "scene": "手動で平日モードを起動するとき",
+    },
 ]
 
 
