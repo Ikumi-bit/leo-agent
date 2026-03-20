@@ -43,6 +43,13 @@ def webhook():
 def health():
     """ヘルスチェック用エンドポイント（Railway用）"""
     return {"status": "ok", "agent": "Leo"}, 200
+    
+@app.route("/test-morning", methods=["GET"])
+def test_morning():
+    """動作テスト用：朝のルーティンを手動実行"""
+    from main import run_morning_routine
+    run_morning_routine()
+    return {"status": "ok", "message": "朝のルーティンを実行しました"}, 200
 
 
 @handler.add(MessageEvent, message=TextMessageContent)
