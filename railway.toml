@@ -1,5 +1,5 @@
 [build]
 builder = "nixpacks"
 
-[deploy]
+[environments.production.deploy]
 startCommand = "gunicorn server:app --bind 0.0.0.0:$PORT --workers 1"
