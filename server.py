@@ -59,8 +59,20 @@ def handle_message(event: MessageEvent):
     user_message = event.message.text
 
     logger.info(f"メッセージ受信 from {user_id}: {user_message[:50]}")
-    handle_user_reply(user_message, user_id)
 
+    from knowledge import find_matching_knowledge
+    knowledge = find_matching_knowledge(user_message)
+
+    if knowledge and knowledge.get("content") == "__WEEKDAY_TRIGGER__":
+        # 平日モードを手動起動
+        from main import _handle_weekday
+        _handle_weekday(user_id)
+    elif knowledge and knowledge.get("content") == "__HOLIDAY_TRIGGER__":
+        # 休日モードを手動起動
+        from main import _handle_holiday
+        _handle_holiday(user_id)
+    else:
+        handle_user_reply(user_message, user_id)
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
