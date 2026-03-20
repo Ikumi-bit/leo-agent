@@ -30,7 +30,7 @@ def _get_client() -> OpenAI:
         raise ValueError(
             "環境変数 OPENAI_API_KEY が設定されていません。"
         )
-    return OpenAI(api_key=api_key)
+    return OpenAI(api_key=api_key, http_client=None)
 
 
 def generate_task_summary(events: list) -> str:
